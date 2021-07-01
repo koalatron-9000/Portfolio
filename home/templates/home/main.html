@@ -1,18 +1,30 @@
 <html>
 <head>
-    <title>{{ settings.APP_NAME }}</title>
-    <!-- edit samples/settings.py and add APP_NAME='DJ4E Samples' or similar
-        Also make sure that home/context_processors.py exists and is included
-        settings.py context processors as 'home.context_processors.settings' -->
 </head>
 <body>
+    
+<h1>Portfolio Items</h1>
+<p>
+{% if project_list %}
+<ul>
+  {% for project in project_list %}
+    <li>
+        <p>{{project.title}}</p>
+        <p>{{project.description}}</p>
+        <img src="{{project.demonstration.url}}">
+        <br>
+        {% for tech in project.technologies.all%}
+          <img src ="{{tech.icon.url}}">
+        {% endfor %}
+        <p>{{project.technologies.all|join:', '}}</p>
+        <img src ="{{project.technologies.all.icon.url}}">
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+  <p>Looks like you found the end of the road. See what I'm up to on <a href="https://github.com/koalatron-9000">Github </a> .</p>
+{% endif %}
 
-    {% block content %}
-        <h1>Welcome to {{ settings.APP_NAME }}</h1>
-        <p>
-        Hello world.
-        </p>
-    {% endblock content %}
 
 </body>
 </html>
