@@ -1,8 +1,6 @@
-<html>
-<head>
-</head>
-<body>
-    
+{% extends 'base.html' %}
+
+{% block content %}
 <h1>Portfolio Items</h1>
 <p>
 {% if project_list %}
@@ -24,7 +22,4 @@
 {% else %}
   <p>Looks like you found the end of the road. See what I'm up to on <a href="https://github.com/koalatron-9000">Github </a> .</p>
 {% endif %}
-
-
-</body>
-</html>
+{% endblock %}
